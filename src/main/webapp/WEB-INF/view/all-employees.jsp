@@ -24,14 +24,31 @@
         <th>Surname</th>
         <th>Department</th>
         <th>Salary</th>
+        <th>Operations</th>
     </tr>
 
     <c:forEach var="emps" items="${allEmps}">
+
+        <c:url var="updateButton" value="/update-info">
+            <c:param name="empID" value="${emps.id}"/>
+        </c:url>
+
+        <c:url var="deleteButton" value="/delete-employe">
+            <c:param name="empID" value="${emps.id}"/>
+        </c:url>
+
         <tr>
             <td>${emps.name}</td>
             <td>${emps.surname}</td>
             <td>${emps.department}</td>
             <td>${emps.salary}</td>
+            <td>
+                <input type="button" value="Update"
+                       onclick="window.location.href = '${updateButton}'"/>
+
+                <input type="button" value="Delete"
+                       onclick="window.location.href = '${deleteButton}'"/>
+            </td>
         </tr>
     </c:forEach>
 
